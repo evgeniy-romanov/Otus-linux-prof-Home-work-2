@@ -172,37 +172,57 @@ sda         8:0    0    40G  0 disk
 
 sdb         8:16   0   250M  0 disk
 └─md0       9:0    0   744M  0 raid6
+ 
   ├─md0p1 259:0    0 184.5M  0 md    /raid/part1
+  
   ├─md0p2 259:1    0   186M  0 md    /raid/part2
+  
   ├─md0p3 259:2    0   186M  0 md    /raid/part3
+  
   └─md0p4 259:3    0 184.5M  0 md    /raid/part4
 
 sdc         8:32   0   250M  0 disk
 └─md0       9:0    0   744M  0 raid6
+  
   ├─md0p1 259:0    0 184.5M  0 md    /raid/part1
+  
   ├─md0p2 259:1    0   186M  0 md    /raid/part2
+  
   ├─md0p3 259:2    0   186M  0 md    /raid/part3
+  
   └─md0p4 259:3    0 184.5M  0 md    /raid/part4
 
 sdd         8:48   0   250M  0 disk
 └─md0       9:0    0   744M  0 raid6
+  
   ├─md0p1 259:0    0 184.5M  0 md    /raid/part1
+  
   ├─md0p2 259:1    0   186M  0 md    /raid/part2
+  
   ├─md0p3 259:2    0   186M  0 md    /raid/part3
+  
   └─md0p4 259:3    0 184.5M  0 md    /raid/part4
 
 sde         8:64   0   250M  0 disk
 └─md0       9:0    0   744M  0 raid6
+ 
   ├─md0p1 259:0    0 184.5M  0 md    /raid/part1
+  
   ├─md0p2 259:1    0   186M  0 md    /raid/part2
+    
   ├─md0p3 259:2    0   186M  0 md    /raid/part3
+  
   └─md0p4 259:3    0 184.5M  0 md    /raid/part4
 
 sdf         8:80   0   250M  0 disk
 └─md0       9:0    0   744M  0 raid6
+  
   ├─md0p1 259:0    0 184.5M  0 md    /raid/part1
+ 
   ├─md0p2 259:1    0   186M  0 md    /raid/part2
+  
   ├─md0p3 259:2    0   186M  0 md    /raid/part3
+ 
   └─md0p4 259:3    0 184.5M  0 md    /raid/part4
 
 ## Итог
