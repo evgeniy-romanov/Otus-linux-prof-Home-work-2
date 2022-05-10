@@ -100,8 +100,12 @@ vagrant@# echo "DEVICE partitions" > /etc/mdadm/mdadm.conf
 vagrant@# mdadm --detail --scan --verbose | awk '/ARRAY/ {print}' >> /etc/mdadm/mdadm.conf
 
 vagrant@$ cat /etc/mdadm/mdadm.conf
+
 DEVICE partitions
-ARRAY /dev/md0 level=raid6 num-devices=5 metadata=1.2 name=otuslinux:0 UUID=53ed2a11:b817e5fc:1b71f485:d6272403
+
+ARRAY /dev/md0 level=raid6 num-devices=5 metadata=1.2 name=otuslinux:0 
+
+UUID=53ed2a11:b817e5fc:1b71f485:d6272403
 
  8 . Сломаем массив sdc и проверим статус
 
@@ -109,18 +113,25 @@ ARRAY /dev/md0 level=raid6 num-devices=5 metadata=1.2 name=otuslinux:0 UUID=53ed
 mdadm: set /dev/sdc faulty in /dev/md0
 
 [vagrant@otuslinux ~]$ cat /proc/mdstat
+
 Personalities : [raid6] [raid5] [raid4]
+
 md0 : active raid6 sdf[4] sde[3] sdd[2] sdc[1](F) sdb[0]
+  
       761856 blocks super 1.2 level 6, 512k chunk, algorithm 2 [5/4] [U_UUU]
  
  9 . Починим Raid, удалив, а потом добавив блок sdc в md0
+
 [vagrant@otuslinux ~]$ sudo  mdadm --remove /dev/md0 /dev/sdc
+
 mdadm: hot removed /dev/sdc from /dev/md0
 
 [vagrant@otuslinux ~]$ sudo mdadm --add /dev/md0 /dev/sdc
+
 mdadm: added /dev/sdc
 
  10 .После того как перестроение массива завершилось, размонтируем /dev/md0 и создадим на нем gpt раздел, в разделе четыре партиции, создадим на них файловую систему, смотрю вывод lsblk и монтирую их по каталогам
+
 [vagrant@otuslinux ~]$ umount /dev/md0
 
 [vagrant@otuslinux ~]$ parted -s /dev/md0 mklabel gpt
@@ -134,6 +145,7 @@ mdadm: added /dev/sdc
 [vagrant@otuslinux ~]$ /dev/md0 mkpart primary ext4 75% 100%
 
  11 . Добавлим следующие строки в Vagrantfile в секцию box.vm.provision, делаем vagrant reload --provision, проверяем
+
 mdadm --zero-superblock --force /dev/sd{b,c,d,e,f}
 
 mdadm --create --verbose /dev/md0 -l 6 -n 5 /dev/sd{b,c,d,e,f}
